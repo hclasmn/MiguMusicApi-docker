@@ -1,10 +1,8 @@
-From node:lts-alpine3.11
-#RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories 
-RUN  apk add --no-cache git
-RUN git clone https://github.com/jsososo/MiguMusicApi.git /MiguMusicApi
-RUN cd /MiguMusicApi
-RUN npm install
-RUN apk del git
-WORKDIR /MiguMusicApi
-EXPOSE 3400
-ENTRYPOINT ["npm start"]
+FROM node:alpine
+WORKDIR MiguMusicApi
+RUN \
+    apk add --no-cache git && \
+    git clone https://github.com/jsososo/MiguMusicApi.git /MiguMusicApi/ && \
+    npm i
+CMD ["npm", "start"]
+EXPOSE 3300
