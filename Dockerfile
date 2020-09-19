@@ -5,5 +5,6 @@ RUN git clone https://github.com/jsososo/MiguMusicApi.git /MiguMusicApi
 RUN cd /MiguMusicApi
 RUN npm install
 RUN apk del git
+WORKDIR /MiguMusicApi
 EXPOSE 3400
 ENTRYPOINT ["npm start"]
